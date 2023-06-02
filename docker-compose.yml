@@ -1,0 +1,17 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: SearchEngine-Backend/Dockerfile
+    image: delon509/fypsearchserver
+    ports:
+      - "80:80"
+  client:
+    build:
+      context: .
+      dockerfile: searchengine-frontend/Dockerfile
+    image: delon509/fypsearchwebsite
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
